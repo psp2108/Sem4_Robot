@@ -1,3 +1,6 @@
 Charging circuit
 1 battery same as before
 rubber tire bigger one
+Relay Modules
+batteries and connectors if needed
+switch to turn car on/off
