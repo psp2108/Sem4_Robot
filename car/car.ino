@@ -5,6 +5,9 @@ AF_DCMotor motor2(2);
 AF_DCMotor motor3(3);
 AF_DCMotor motor4(4);
 
+int RELAY_ON = 0;
+int RELAY_OFF = (RELAY_ON == 1)?0:1;;
+
 char bt='S';
 void setup()
 {
@@ -15,18 +18,24 @@ void setup()
   pinMode(16,OUTPUT);
   pinMode(17,OUTPUT);
   pinMode(18,OUTPUT);
-  pinMode(19,OUTPUT);
+  pinMode(19,INPUT);
  
   motor1.setSpeed(255);
   motor2.setSpeed(255);
   motor3.setSpeed(255);
   motor4.setSpeed(255);
   Stop();
+  digitalWrite(19, 1);
+  alloff();
 }
 
 
 void loop() {
   bt=Serial.read();
+
+  if(!(digitalRead(19) == 0)){
+    alloff();
+  }
 
   switch(bt){
     case 'F':
@@ -44,57 +53,76 @@ void loop() {
     case 'S':
       Stop(); 
       break;
-    case '1':
-      digitalWrite(14,1);
-      delay(700);
-      digitalWrite(14,0);
-      break;
-    case '2':
-      digitalWrite(15,1);
-      delay(700);
-      digitalWrite(15,0);    
-      break;
-    case '3':
-      digitalWrite(16,1);
-      delay(700);
-      digitalWrite(16,0);
-      break;
-    case '4':
-      digitalWrite(17,1);
-      delay(700);
-      digitalWrite(17,0);
-      break;
-    case '5':
-      digitalWrite(18,1);
-      delay(700);
-      digitalWrite(18,0);
-      break;
-    case '6':
-      digitalWrite(19,1);
-      delay(700);
-      digitalWrite(19,0);
-      break;
-    case 'a':
-      pattern1();
-      break;
+    default:
+      if(digitalRead(19) == 0){
+        switch(bt){
+          case '1':
+            digitalWrite(14,RELAY_ON);
+            delay(700);
+            digitalWrite(14,RELAY_OFF);
+            break;
+          case '2':
+            digitalWrite(15,RELAY_ON);
+            delay(700);
+            digitalWrite(15,RELAY_OFF);    
+            break;
+          case '3':
+            digitalWrite(16,RELAY_ON);
+            delay(700);
+            digitalWrite(16,RELAY_OFF);
+            break;
+          case '4':
+            digitalWrite(17,RELAY_ON);
+            delay(700);
+            digitalWrite(17,RELAY_OFF);
+            break;
+          case '5':
+            digitalWrite(18,RELAY_ON);
+            delay(700);
+            digitalWrite(18,RELAY_OFF);
+            break;/*
+          case '6':
+            digitalWrite(19,RELAY_ON);
+            delay(700);
+            //digitalWrite(19,RELAY_OFF);
+            break;*/
+          case 'a':
+            pattern1();
+            break;
+          case '0':
+            alloff();
+            break;
+        }
+      }
+      break;    
   }
 }
 
 void pattern1() {
-  digitalWrite(14,1);
-  digitalWrite(18,1);
+  digitalWrite(14,RELAY_OFF);
+  digitalWrite(18,RELAY_OFF);
   delay(1000);
-  digitalWrite(14,0);
-  digitalWrite(18,0);
-  digitalWrite(16,1);
+  digitalWrite(14,RELAY_ON);
+  digitalWrite(18,RELAY_ON);
+  digitalWrite(16,RELAY_OFF);
   delay(1000);
-  digitalWrite(16,0);
-  digitalWrite(15,1);
-  digitalWrite(17,1);
+  digitalWrite(16,RELAY_ON);
+  digitalWrite(15,RELAY_OFF);
+  digitalWrite(17,RELAY_OFF);
   delay(1000);
-  digitalWrite(15,0);
-  digitalWrite(17,0);
-  
+  digitalWrite(15,RELAY_ON);
+  digitalWrite(17,RELAY_ON);
+}
+
+void alloff(){
+  for(int i=14; i<=18; i++){
+    digitalWrite(i,RELAY_OFF);
+  }
+}
+void allon(){
+  for(int i=14; i<=18; i++){
+    digitalWrite(i,RELAY_ON);
+  }
 }
 
 void forward() {
