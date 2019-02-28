@@ -5,8 +5,9 @@ AF_DCMotor motor2(2);
 AF_DCMotor motor3(3);
 AF_DCMotor motor4(4);
 
-int RELAY_ON = 0;
-int RELAY_OFF = (RELAY_ON == 1)?0:1;;
+int RELAY_ON = 1;
+int RELAY_OFF = (RELAY_ON == 1)?0:1;
+int DELAY = 300;
 
 char bt='S';
 void setup()
@@ -58,27 +59,27 @@ void loop() {
         switch(bt){
           case '1':
             digitalWrite(14,RELAY_ON);
-            delay(700);
+            delay(DELAY);
             digitalWrite(14,RELAY_OFF);
             break;
           case '2':
             digitalWrite(15,RELAY_ON);
-            delay(700);
+            delay(DELAY);
             digitalWrite(15,RELAY_OFF);    
             break;
           case '3':
             digitalWrite(16,RELAY_ON);
-            delay(700);
+            delay(DELAY);
             digitalWrite(16,RELAY_OFF);
             break;
           case '4':
             digitalWrite(17,RELAY_ON);
-            delay(700);
+            delay(DELAY);
             digitalWrite(17,RELAY_OFF);
             break;
           case '5':
             digitalWrite(18,RELAY_ON);
-            delay(700);
+            delay(DELAY);
             digitalWrite(18,RELAY_OFF);
             break;/*
           case '6':
@@ -101,15 +102,15 @@ void loop() {
 void pattern1() {
   digitalWrite(14,RELAY_OFF);
   digitalWrite(18,RELAY_OFF);
-  delay(1000);
+  delay(DELAY);
   digitalWrite(14,RELAY_ON);
   digitalWrite(18,RELAY_ON);
   digitalWrite(16,RELAY_OFF);
-  delay(1000);
+  delay(DELAY);
   digitalWrite(16,RELAY_ON);
   digitalWrite(15,RELAY_OFF);
   digitalWrite(17,RELAY_OFF);
-  delay(1000);
+  delay(DELAY);
   digitalWrite(15,RELAY_ON);
   digitalWrite(17,RELAY_ON);
 }

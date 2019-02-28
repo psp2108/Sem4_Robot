@@ -1,6 +1,20 @@
 Charging circuit
-1 battery same as before
-rubber tire bigger one
+Qty: 1
+
+Switch[to turn car on/off]
+
+Battery[same as before]
+Qty: 1
+
+Battery Holder
+Qty: 3x1[Separated]
+
+Rubber tire[bigger one]
+Qty: 8
+
 Relay Modules
-batteries and connectors if needed
-switch to turn car on/off
+Qty: 1
+Desc: 4 Relays on 1 Module
+Ref. Link: https://www.amazon.in/dp/B07CSNLZJ8/ref=cm_sw_r_wa_apa_i_CX.wCbZ8MY3JK
+
+Batteries & Connectors if needed
