@@ -1,0 +1,14 @@
+Many Roads & Highways hold severe significance when it comes to nation's security concern(s). 
+
+These Roads & Highway have to have officers checking the vehicles passing by including using barriers.
+
+In the recent terrorist attacks in India it seems a good option to add road security.
+
+In this project, we put forth 
+--> a system that would 
+--> record attributes(e.g. Weight) of a vehicle passing through a checking zone(but temporarily waiting for it's turn to get checked). 
+
+After recording those parameters, 
+the system will do 
+--> quick analysis of them & 
+--> send an instant report on suspecible attributes to the nearest cop's computer who would then become more aware while checking those attributes of the vehicle. And thus the system would help in sharping the senses of the security officer.
